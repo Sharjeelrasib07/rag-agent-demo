@@ -30,7 +30,8 @@ groq_client = Groq(api_key=api_key)
 # Use the default lightweight embedding function from ChromaDB
 embed_fn = embedding_functions.DefaultEmbeddingFunction()
 chroma_client = chromadb.PersistentClient(path="rag_db")
-collection = chroma_client.get_collection(name="knowledge_base", embedding_function=embed_fn)
+# Use get_or_create_collection so it doesn't crash on the first run!
+collection = chroma_client.get_or_create_collection(name="knowledge_base", embedding_function=embed_fn)
 
 app = FastAPI()
 
