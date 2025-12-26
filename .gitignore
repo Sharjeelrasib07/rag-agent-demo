@@ -1,0 +1,4 @@
+﻿.env
+.env
+rag_db/
+chat_history.db
