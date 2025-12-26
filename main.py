@@ -27,7 +27,8 @@ if not api_key:
     print("❌ ERROR: GROQ_API_KEY is missing in .env file!")
 groq_client = Groq(api_key=api_key)
 
-embed_fn = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L6-v2")
+# Use the default lightweight embedding function from ChromaDB
+embed_fn = embedding_functions.DefaultEmbeddingFunction()
 chroma_client = chromadb.PersistentClient(path="rag_db")
 collection = chroma_client.get_collection(name="knowledge_base", embedding_function=embed_fn)
 
