@@ -6,3 +6,4 @@ pypdf
 python-multipart
 python-dotenv
 websockets
+sentence-transformers
